@@ -7,8 +7,16 @@ import userRoutes from './routes/users.js';
 
 const app = express();
 
+// CORS configuration
+const corsOptions = {
+    origin: process.env.NODE_ENV === 'production'
+        ? [process.env.FRONTEND_URL, 'https://your-netlify-site.netlify.app']
+        : 'http://localhost:3000',
+    credentials: true,
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
