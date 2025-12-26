@@ -1,0 +1,25 @@
+{
+  "name": "open-world-server",
+  "version": "1.0.0",
+  "description": "Backend for Open World Image Sharing Platform",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": ["image", "sharing", "pinterest", "social"],
+  "author": "Youssef",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^8.0.3",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "multer": "^1.4.5-lts.1",
+    "cloudinary": "^1.41.0",
+    "express-validator": "^7.0.1"
+  }
+}
