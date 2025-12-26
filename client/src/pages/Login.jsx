@@ -90,6 +90,12 @@ const Login = () => {
                         </button>
                     </form>
 
+                    <div className="text-center mt-md">
+                        <Link to="/forgot-password" style={{ color: 'var(--text-secondary)', fontSize: 'var(--font-size-sm)' }}>
+                            نسيت كلمة المرور؟
+                        </Link>
+                    </div>
+
                     <p className="text-center mt-lg">
                         ليس لديك حساب؟{' '}
                         <Link to="/register" style={{ fontWeight: 'bold' }}>
