@@ -16,6 +16,8 @@ import Collections from './pages/Collections';
 import CollectionDetails from './pages/CollectionDetails';
 import Search from './pages/Search';
 import AdminDashboard from './pages/AdminDashboard';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 
 function App() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -31,6 +33,8 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/forgot-password" element={<ForgotPassword />} />
+                    <Route path="/reset-password/:token" element={<ResetPassword />} />
                     <Route path="/search" element={<Search />} />
                     <Route path="/profile/:userId" element={<Profile />} />
 
