@@ -1,8 +1,25 @@
-# Open World Image Sharing Platform - README
+# 🎨 Open World - Image Sharing Platform
 
-## 🚀 منصة مشاركة الصور للمصممين العرب
+> منصة حديثة لمشاركة واستكشاف الصور للمصممين العرب - مشابهة لـ Pinterest
 
-منصة حديثة لمشاركة واستكشاف الصور مشابهة لـ Pinterest، مبنية بتقنيات حديثة وتصميم عصري.
+[![React](https://img.shields.io/badge/React-18.2-blue.svg)](https://reactjs.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-brightgreen.svg)](https://www.mongodb.com/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+## ✨ المميزات
+
+- 🔐 نظام مصادقة كامل (JWT)
+- 📸 رفع وإدارة الصور
+- ❤️ إعجاب وحفظ الصور
+- 💬 نظام التعليقات
+- 📁 إنشاء مجموعات (Collections)
+- 🔍 بحث وفلترة متقدمة
+- ⬇️ تحميل الصور
+- 👤 تعديل الملف الشخصي
+- 👑 لوحة تحكم للمدراء
+- 📱 تصميم متجاوب (Mobile + Desktop)
+- 🌙 دعم اللغة العربية RTL
 
 ## 🛠️ التقنيات المستخدمة
 
@@ -12,7 +29,6 @@
 - **JWT** - Authentication
 - **Cloudinary** - Image storage
 - **Bcrypt** - Password hashing
-- **Multer** - File uploads
 
 ### Frontend
 - **React 18** - UI library
@@ -20,46 +36,44 @@
 - **React Router** - Navigation
 - **Zustand** - State management
 - **Axios** - HTTP client
-- **Global CSS** - Styling (no Tailwind)
+- **Global CSS** - Styling
+- **React Icons** - Icon library
 - **React Masonry CSS** - Grid layout
 - **React Infinite Scroll** - Pagination
 
-## 📦 المميزات
+## 🚀 التثبيت والتشغيل
 
-✅ نظام مصادقة كامل (تسجيل / دخول)  
-✅ رفع الصور إلى Cloudinary  
-✅ عرض الصور بتصميم Masonry Grid  
-✅ Infinite Scroll للصور  
-✅ إعجاب وحفظ الصور  
-✅ نظام التعليقات  
-✅ إنشاء مجموعات (Collections/Boards)  
-✅ البحث والفلترة بالوسوم  
-✅ صفحات الملف الشخصي  
-✅ لوحة تحكم للمدراء  
-✅ تصميم متجاوب (Mobile + Desktop)  
-✅ دعم اللغة العربية RTL
+### المتطلبات
+- Node.js 18+
+- MongoDB Atlas account
+- Cloudinary account (اختياري)
 
-## 🔧 التثبيت والتشغيل
+### 1. Clone المشروع
+```bash
+git clone https://github.com/Youssefel4/open-world.git
+cd open-world
+```
 
-### 1. Backend Setup
+### 2. Backend Setup
 
 ```bash
 cd server
 npm install
 ```
 
-**تعديل ملف `.env`:**
-```env
-MONGO_URI=mongodb+srv://yousseflachgar288_db_user:hw03dZmL5Zi35C4X@cluster0.xqadd9a.mongodb.net/openworld?appName=Cluster0
-JWT_SECRET=your_super_strong_jwt_secret_key_change_this_in_production_2024
+**إنشاء ملف `.env`:**
+```bash
+cp .env.example .env
+```
 
-# احصل على هذه القيم من cloudinary.com
+**تعديل `.env` وإضافة بياناتك:**
+```env
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret_key
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
-
 PORT=5000
-NODE_ENV=development
 ```
 
 **تشغيل السيرفر:**
@@ -67,9 +81,7 @@ NODE_ENV=development
 npm run dev
 ```
 
-السيرفر سيعمل على: `http://localhost:5000`
-
-### 2. Frontend Setup
+### 3. Frontend Setup
 
 ```bash
 cd client
@@ -82,16 +94,14 @@ npm run dev
 ## 📁 هيكل المشروع
 
 ```
-Open World Image Sharing Platform/
+open-world/
 ├── server/                 # Backend
 │   ├── config/            # Database & Cloudinary config
 │   ├── controllers/       # Route controllers
 │   ├── middleware/        # Auth & upload middleware
 │   ├── models/           # MongoDB models
 │   ├── routes/           # API routes
-│   ├── utils/            # Helper functions
-│   ├── app.js            # Express app
-│   └── server.js         # Server entry point
+│   └── utils/            # Helper functions
 │
 └── client/                # Frontend
     ├── src/
@@ -99,11 +109,8 @@ Open World Image Sharing Platform/
     │   ├── pages/        # Page components
     │   ├── services/     # API services
     │   ├── store/        # Zustand stores
-    │   ├── index.css     # Global CSS
-    │   ├── App.jsx       # Main app
-    │   └── main.jsx      # Entry point
-    ├── index.html
-    └── vite.config.js
+    │   └── index.css     # Global CSS
+    └── public/
 ```
 
 ## 🔑 API Endpoints
@@ -115,88 +122,67 @@ Open World Image Sharing Platform/
 
 ### Images
 - `GET /api/images` - جلب جميع الصور
-- `GET /api/images/:id` - جلب صورة محددة
 - `POST /api/images/upload` - رفع صورة جديدة
+- `GET /api/images/:id` - جلب صورة محددة
 - `PATCH /api/images/:id` - تعديل صورة
 - `DELETE /api/images/:id` - حذف صورة
 - `POST /api/images/:id/like` - إعجاب/إلغاء إعجاب
 - `POST /api/images/:id/save` - حفظ/إلغاء حفظ
 - `POST /api/images/:id/comments` - إضافة تعليق
-- `DELETE /api/images/:id/comments/:commentId` - حذف تعليق
 
 ### Collections
 - `GET /api/collections` - جلب المجموعات
-- `GET /api/collections/:id` - جلب مجموعة محددة
 - `POST /api/collections` - إنشاء مجموعة
+- `GET /api/collections/:id` - جلب مجموعة محددة
 - `PATCH /api/collections/:id` - تعديل مجموعة
 - `DELETE /api/collections/:id` - حذف مجموعة
-- `POST /api/collections/:id/images` - إضافة صورة للمجموعة
-- `DELETE /api/collections/:id/images/:imageId` - إزالة صورة من المجموعة
 
-### Users (Admin)
-- `GET /api/users` - جلب جميع المستخدمين (مدير فقط)
-- `GET /api/users/:id` - جلب مستخدم محدد
-- `DELETE /api/users/:id` - حذف مستخدم (مدير فقط)
-- `GET /api/users/:id/images` - جلب صور المستخدم
-- `GET /api/users/:id/saved` - جلب الصور المحفوظة
+### Users
+- `GET /api/users/:id` - جلب ملف المستخدم
+- `PATCH /api/users/profile` - تعديل الملف الشخصي
+- `POST /api/users/profile/image` - رفع صورة الملف الشخصي
 
-## 🎨 التصميم
+## 🎨 المميزات الإضافية
 
-التطبيق يستخدم **Global CSS** مع:
-- CSS Variables للألوان والمسافات
-- تصميم متجاوب (Mobile-first)
-- دعم Dark Mode (جاهز للتفعيل)
-- Animations و Transitions سلسة
-- دعم RTL للغة العربية
-- خط Cairo من Google Fonts
+### تعديل الملف الشخصي
+- تغيير الصورة الشخصية
+- تعديل الاسم
+- إضافة نبذة عنك (Bio)
 
-## 👤 إنشاء حساب مدير
+### تحميل الصور
+- تحميل أي صورة بنقرة واحدة
+- دعم جميع صيغ الصور
 
-لإنشاء حساب مدير، قم بتسجيل حساب عادي ثم عدّل الدور في قاعدة البيانات:
+### البحث الذكي
+- بحث في العناوين والوسوم
+- فلترة بالوسوم
+- نتائج فورية
 
-```javascript
-// في MongoDB
-db.users.updateOne(
-  { email: "admin@example.com" },
-  { $set: { role: "admin" } }
-)
-```
+## 👨‍💻 المساهمة
 
-## 🔐 Cloudinary Setup
-
-1. اذهب إلى [cloudinary.com](https://cloudinary.com)
-2. أنشئ حساب مجاني
-3. من Dashboard، احصل على:
-   - Cloud Name
-   - API Key
-   - API Secret
-4. ضعها في ملف `.env`
-
-## 📝 ملاحظات مهمة
-
-- حجم الصورة الأقصى: **5MB**
-- الصيغ المدعومة: JPG, PNG, GIF, WEBP
-- عدد الوسوم الأقصى: **10**
-- طول كلمة المرور الأدنى: **6 أحرف**
-
-## 🚀 الإنتاج (Production)
-
-### Backend
-```bash
-cd server
-npm start
-```
-
-### Frontend
-```bash
-cd client
-npm run build
-npm run preview
-```
+المساهمات مرحب بها! يرجى:
+1. Fork المشروع
+2. إنشاء branch جديد (`git checkout -b feature/AmazingFeature`)
+3. Commit التغييرات (`git commit -m 'Add some AmazingFeature'`)
+4. Push للـ branch (`git push origin feature/AmazingFeature`)
+5. فتح Pull Request
 
 ## 📄 الترخيص
 
-MIT License - مفتوح المصدر
+هذا المشروع مرخص تحت MIT License - انظر ملف [LICENSE](LICENSE) للتفاصيل
+
+## 👤 المطور
+
+**Youssef**
+- GitHub: [@Youssefel4](https://github.com/Youssefel4)
+
+## 🙏 شكر وتقدير
+
+- [React](https://reactjs.org/)
+- [Node.js](https://nodejs.org/)
+- [MongoDB](https://www.mongodb.com/)
+- [Cloudinary](https://cloudinary.com/)
+- [React Icons](https://react-icons.github.io/react-icons/)
 
 ---
 
