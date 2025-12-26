@@ -74,9 +74,9 @@ const Home = () => {
                 )}
 
                 {/* Images Grid */}
-                {loading && images.length === 0 ? (
+                {loading && (!images || images.length === 0) ? (
                     <Loader />
-                ) : images.length === 0 ? (
+                ) : (!images || images.length === 0) ? (
                     <div className="text-center">
                         <p style={{ fontSize: 'var(--font-size-xl)', color: 'var(--text-tertiary)' }}>
                             لا توجد صور بعد
@@ -84,13 +84,13 @@ const Home = () => {
                     </div>
                 ) : (
                     <InfiniteScroll
-                        dataLength={images.length}
+                        dataLength={images?.length || 0}
                         next={loadMore}
                         hasMore={hasMore}
                         loader={<Loader />}
                     >
                         <MasonryGrid>
-                            {images.map((image) => (
+                            {images?.map((image) => (
                                 <ImageCard
                                     key={image._id}
                                     image={image}
